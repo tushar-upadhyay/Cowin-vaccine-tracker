@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./fetch.js"></script>
+    <style>
+        html,
+        body {
+            height: 98vh;
+        }
+
+        #result{
+            margin:20px;
+            margin-top: 5%;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            flex-direction: column;
+        }
+    </style>
+    <title>Cowin</title>
+</head>
+
+<body>
+
+    <center>
+        <h3>Vaccine Slot Availability</h3>
+        <p>Get information for next 1 month </p>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>One time setup</h4>
+      <p>Enter your pincode once and every time you refresh or reopen the page the page will directly show the available slots(you can change it later)</p>
+      <div class="input-field inline">
+        <input  required id="setPincode" type="text" pattern="[0-9]{6}">
+        <label  for="pincode">Pin Code</label>
+        <button class="waves-effect waves-light btn" onclick="setPincode()">Submit</button>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+  </div>
+        <div id="result">
+            <div style="display: flex; align-items: center;">
+            <button onclick="changePincode()" class="waves-effect waves-light btn" type="submit">Change Pincode</button>
+            <p style="margin-left: 8px;">
+            <label>
+                <input onchange="filter()" id="filter" type="checkbox" class="filled-in"  />
+                <span>18+ only?</span>
+              </label>
+              </p>
+</div>
+
+            <h2 id="loading">
+                Loading....
+            </h2>
+            <div>
+                <ul class="collection" id="target">
+
+                </ul>
+            </div>
+        </div>
+    </center>
+</body>
+
+</html>
