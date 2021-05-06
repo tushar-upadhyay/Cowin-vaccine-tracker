@@ -1,7 +1,7 @@
 
  document.addEventListener('DOMContentLoaded', function() {
     let elems = document.querySelectorAll('.modal');
-    window.instances = M.Modal.init(elems);
+    window.instances = M.Modal.init(elems,{dismissible:false});
 
   });
 
@@ -61,10 +61,14 @@ function changePincode(){
     window.instances[0].open();
 }
 
-function setPincode(){
-    const pincode = document.getElementById('setPincode').value;
-    localStorage.setItem('pincode',pincode);
-    window.pincode = pincode;
+function setPincode(e){
+    
+    const pincode = document.getElementById('setPincode');
+    if(String(pincode.value).length!=6){
+        return alert('Enter valid pincode')
+    }
+    localStorage.setItem('pincode',pincode.value);
+    window.pincode = pincode.value;
     window.instances[0].close();
     document.getElementById('filter').checked = false
     kuchbhi();
